@@ -9,8 +9,8 @@ class CategoryProduct extends Model
 {
     protected $table = 'category_products';
 
-    public function detailProduct()
+    public function detailProducts()
     {
-        return $this->hasMany(DetailProduct::class);
+        return $this->hasMany(DetailProduct::class, 'category_product_id');
     }
 }

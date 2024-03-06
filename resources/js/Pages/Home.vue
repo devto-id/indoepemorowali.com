@@ -8,6 +8,10 @@ import Pricelist from '@/Components/Home/Pricelist.vue';
 const props = defineProps({
   menu: Object,
   _title: String,
+  categoryProduct: {
+        type: Array,
+        required: true,
+    },
 });
 </script>
 
@@ -16,7 +20,7 @@ const props = defineProps({
   <Jumbotron/>
   <About/>
   <CoreValue/>
-  <Pricelist/>
+  <Pricelist :categoryProduct="categoryProduct"/>
 </template>
 
 <style scoped lang="scss">
