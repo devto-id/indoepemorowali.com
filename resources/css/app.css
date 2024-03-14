@@ -2,6 +2,19 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer components{
+    .accordion-header {
+        @apply py-4 px-6 cursor-pointer flex justify-between
+    }
+    .accordion-header.active .arrow{
+        @apply transition-all ease-in-out duration-300;
+        transform: rotateX(180deg)
+    }
+    .accordion-body {
+        @apply max-h-0 overflow-hidden transition-all duration-200 ease-out
+    }
+}
+
 .font-heading{
     font-weight: bold;
     font-family: "Montserrat", sans-serif;

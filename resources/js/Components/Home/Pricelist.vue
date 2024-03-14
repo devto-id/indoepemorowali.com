@@ -1,36 +1,69 @@
+<script setup>
+import { ChevronDown24Filled } from "@vicons/fluent";
+import { defineProps, ref } from 'vue'; 
+
+const props = defineProps({ 
+    categoryProducts: { 
+        type: Array, 
+        required: true, 
+    }, 
+}); 
+
+const formatCurrency = (value) => {
+    return new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR' }).format(value);
+}
+
+const activeAccordionIndex = ref(-1);
+
+const toggleAccordion = (index) => {
+    if (activeAccordionIndex.value === index) {
+        activeAccordionIndex.value = -1; // Tutup jika sudah terbuka
+    } else {
+        activeAccordionIndex.value = index; // Buka jika tertutup
+    }
+};
+
+const isAccordionOpen = (index) => {
+    return activeAccordionIndex.value === index; // Mengecek apakah accordion terbuka atau tidak
+};
+</script>
+
 <template>
-    <div class="pricelist"> 
-        <div class="container"> 
-            <div class="title"> 
-                <h1 class="font-heading text-gray-700 font-heading text-center text-4xl max-[570px]:text-3xl max-[485px]:text-2xl max-[400px]:text-xl"> 
-                    List Product dan Harga Terbaru 
-                </h1> 
-            </div> 
-            <div class="content"> 
-                <n-collapse default-expanded-names="1" accordion> 
-                    <n-collapse-item v-for="(category, index) in categoryProducts" :key="category.id" :title="category.nama_kategori" :name="`category-${index}`"> 
-                        <ul> 
-                            <li v-for="(detail, i) in category.detailProducts" :key="i"> 
-                                {{ detail.nama_produk }} - {{ detail.harga }} 
-                            </li> 
-                        </ul> 
-                    </n-collapse-item> 
-                </n-collapse> 
-            </div> 
+<div class="pricelist"> 
+    <div class="container"> 
+        <div class="title"> 
+            <h1 class="font-heading text-gray-700 font-heading text-center text-4xl max-[570px]:text-3xl max-[485px]:text-2xl max-[400px]:text-xl"> 
+                List Product dan Harga Terbaru 
+            </h1> 
+        </div> 
+        <div class="content m-10 flex justify-center flex-wrap">
+            <div class="bungkus max-w-lg w-[100%]" v-for="(category, index) in categoryProducts" :key="category.id" :name="`category-${index}`">
+                <div class="accordion rounded-xl overflow-hidden transition-all shadow-md hover:shadow-lg">
+                    <div class="accordion-header bg-primary-50 py-4 px-6 cursor-pointer flex justify-between" @click="toggleAccordion(index)">
+                        <span class="font-semibold text-lg">{{ category.nama_kategori }}</span>
+                        <ChevronDown24Filled class="arrow w-5" :class="{ 'rotate-180': isAccordionOpen(index) }"/>
+                    </div>
+                    <div class="accordion-body" :class="{ 'h-fit': isAccordionOpen(index), 'max-h-[500px]': isAccordionOpen(index), 'max-h-0': !isAccordionOpen(index) }">
+                        <ul class="p-4">
+                            <li class="text-base" v-for="(detail, i) in category.detail_products" :key="i">
+                            - {{ detail.nama_produk }} <br>
+                            {{ formatCurrency(detail.harga) }} Isi {{ detail.qty_barang }}
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
         </div> 
     </div> 
-</template> 
-
-<script setup> 
-    import { defineProps } from 'vue'; 
-    const props = defineProps({ 
-        categoryProducts: { 
-            type: Array, 
-            required: true, 
-        }, 
-    }); 
-</script> 
+</div> 
+</template>  
 
 <style scoped lang="scss"> 
-    $primary: #05A7E7; 
+$primary: #05A7E7; 
+
+.bungkus {
+    max-width: 500px;
+    width: 100%;
+    margin: 5px;
+}
 </style>

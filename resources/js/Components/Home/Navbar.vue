@@ -1,6 +1,8 @@
 <script setup>
 import { onMounted, ref } from 'vue';
 import { Link } from '@inertiajs/vue3';
+import horizontal from '../../../../public/img/logo/logo-horizontal.png';
+import iconLogo from '../../../../public/img/icon/icon.png';
 
 // Gunakan variabel reaktivitas untuk mengontrol tampilan menu
 const isMenuOpen = ref(false);
@@ -27,8 +29,8 @@ onMounted(() => {
     <div class="navbar bg-white py-5 px-5 flex items-center justify-evenly h-fit w-full fixed top-0 drop-shadow-md">
       <div class="logo mx-5">
         <Link href="/home">
-          <img src="../../../../public/img/logo/logo-horizontal.png" alt="Logo" width="100%" class="max-[300px]:hidden">
-          <img src="../../../../public/img/icon/icon.png" alt="Logo" width="100%" class="hidden max-[300px]:block max-w-[50px]">
+          <img :src="horizontal" alt="Logo" width="100%" class="max-[300px]:hidden">
+          <img :src="iconLogo" alt="Logo" width="100%" class="hidden max-[300px]:block max-w-[50px]">
         </Link>
       </div>
       <div class="nav-links my-auto text-lg font-bold flex items-center max-[1080px]:flex-col" :class="{ 'show': isMenuOpen }">

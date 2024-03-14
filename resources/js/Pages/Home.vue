@@ -1,17 +1,24 @@
 <script setup>
+import {defineProps} from 'vue';
 import Navbar from '@/Components/Home/Navbar.vue';
 import Jumbotron from '@/Components/Home/Jumbotron.vue';
 import About from '@/Components/Home/About.vue';
 import CoreValue from '@/Components/Home/Corevalue.vue';
 import Pricelist from '@/Components/Home/Pricelist.vue';
+import Testimoni from '@/Components/Home/Testimoni.vue';
+import Contact from '@/Components/Home/Contact.vue';
 
 const props = defineProps({
   menu: Object,
   _title: String,
-  categoryProduct: {
-        type: Array,
-        required: true,
-    },
+  categoryProducts: { 
+    type: Array, 
+    required: true, 
+  }, 
+  testimoni: { 
+    type: Array, 
+    required: true, 
+  },
 });
 </script>
 
@@ -20,7 +27,10 @@ const props = defineProps({
   <Jumbotron/>
   <About/>
   <CoreValue/>
-  <Pricelist :categoryProduct="categoryProduct"/>
+  <Pricelist :categoryProducts="categoryProducts"/>
+  <Testimoni :testimoni="testimoni" />
+  <Contact/>
+
 </template>
 
 <style scoped lang="scss">

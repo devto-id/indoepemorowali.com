@@ -17,6 +17,7 @@ class CreateDetailProductsTable extends Migration
             $table->id();
             $table->foreignId('category_product_id')->constrained('category_products');
             $table->string('nama_produk');
+            $table->string('qty_barang');
             $table->decimal('harga', 10, 2);
             $table->timestamps();
         });
