@@ -18,6 +18,7 @@ use Inertia\Inertia;
 */
 
 Route::get('/', [HomeController::class, 'index'])->name('home.index');
+Route::post('/contact', [HomeController::class, 'store'])->name('contact.form');
 
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');

@@ -8,6 +8,10 @@ import { ZiggyVue } from '../../vendor/tightenco/ziggy/dist/vue.m';
 
 
 import naive from 'naive-ui';
+import pinia from "@/Stores";
+
+import VueTelInput from "vue-tel-input";
+import 'vue-tel-input/vue-tel-input.css';
 
 const appName = import.meta.env.VITE_APP_NAME || 'Laravel';
 
@@ -19,6 +23,8 @@ createInertiaApp({
             .use(plugin)
             .use(ZiggyVue)
             .use(naive)
+            .use(pinia)
+            .use(VueTelInput)
             .mount(el);
     },
     progress: {

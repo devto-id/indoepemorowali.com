@@ -30,10 +30,10 @@ const isAccordionOpen = (index) => {
 
 <template>
 <div class="pricelist"> 
-    <div class="container"> 
+    <div class="container p-5"> 
         <div class="title"> 
             <h1 class="font-heading text-gray-700 font-heading text-center text-4xl max-[570px]:text-3xl max-[485px]:text-2xl max-[400px]:text-xl"> 
-                List Product dan Harga Terbaru 
+                List Produk dan Harga Terbaru 
             </h1> 
         </div> 
         <div class="content m-10 flex justify-center flex-wrap">

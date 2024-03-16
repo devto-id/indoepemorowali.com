@@ -7,6 +7,10 @@ import CoreValue from '@/Components/Home/Corevalue.vue';
 import Pricelist from '@/Components/Home/Pricelist.vue';
 import Testimoni from '@/Components/Home/Testimoni.vue';
 import Contact from '@/Components/Home/Contact.vue';
+import Copyright from '@/Components/Home/Copyright.vue';
+import { useApplicationStore } from "@/Stores/ApplicationStore";
+
+const applicationStore = useApplicationStore();
 
 const props = defineProps({
   menu: Object,
@@ -23,14 +27,19 @@ const props = defineProps({
 </script>
 
 <template>
-  <Navbar/>
-  <Jumbotron/>
-  <About/>
-  <CoreValue/>
-  <Pricelist :categoryProducts="categoryProducts"/>
-  <Testimoni :testimoni="testimoni" />
-  <Contact/>
-
+  <n-config-provider
+    :theme="applicationStore.theme"
+    :themeOverrides="applicationStore.themeOverrides"
+  >
+    <Navbar/>
+    <Jumbotron/>
+    <About/>
+    <CoreValue/>
+    <Pricelist :categoryProducts="categoryProducts"/>
+    <Testimoni :testimoni="testimoni" />
+    <Contact/>
+    <Copyright/>
+  </n-config-provider>
 </template>
 
 <style scoped lang="scss">
