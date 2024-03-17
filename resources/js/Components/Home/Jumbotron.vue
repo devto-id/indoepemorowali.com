@@ -1,8 +1,14 @@
 <script setup>
+const scrollToFeedback = () => {
+    const feedbackSection = document.getElementById("contact");
+    if (feedbackSection) {
+        feedbackSection.scrollIntoView({ behavior: "smooth" });
+    }
+};
 </script>
 <template>
     <header>
-        <div class="jumbotron mt-[125px] p-10">
+        <div class="jumbotron pt-[100px] px-10">
             <div class="container flex flex-wrap">
                 <div class="text max-w-[500px] w-[100%] h-fit m-auto items-center">
                     <div class="title mx-auto max-w-[500px]">
@@ -14,7 +20,7 @@
                                 Distributor dan supplier terkemuka di Indonesia, khususnya dalam menyediakan bahan pangan berkualitas tinggi. Dengan pengalaman yang luas dan komitmen untuk keunggulan layanan, kami telah menjadi pilihan utama bagi pelanggan di seluruh negeri.
                             </p>
                         </div>
-                        <button class="primary-button">
+                        <button @click="scrollToFeedback" type="button" class="primary-button">
                             <span class="circle" aria-hidden="true">
                             <span class="icon arrow"></span>
                             </span>

@@ -8,6 +8,7 @@ import Pricelist from '@/Components/Home/Pricelist.vue';
 import Testimoni from '@/Components/Home/Testimoni.vue';
 import Contact from '@/Components/Home/Contact.vue';
 import Copyright from '@/Components/Home/Copyright.vue';
+import WhatsApp from '@/Components/Home/Whatsapp.vue';
 import { useApplicationStore } from "@/Stores/ApplicationStore";
 
 const applicationStore = useApplicationStore();
@@ -32,18 +33,28 @@ const props = defineProps({
     :themeOverrides="applicationStore.themeOverrides"
   >
     <Navbar/>
-    <Jumbotron/>
-    <About/>
-    <CoreValue/>
-    <Pricelist :categoryProducts="categoryProducts"/>
-    <Testimoni :testimoni="testimoni" />
-    <Contact/>
+    <div id="jumbotron">
+      <Jumbotron/>
+    </div>
+    <div id="about" class="pt-[150px]">
+      <About/>
+      <CoreValue class="pt-[150px]"/>
+    </div>
+    <div id="pricelist" class="pt-[150px] min-h-[500px] mt-[50px]">
+      <Pricelist :categoryProducts="categoryProducts"/>
+    </div>
+    <div id="testimoni" class="pt-[200px] min-h-[500px]">
+      <Testimoni :testimoni="testimoni" />
+    </div>
+    <div id="contact" class="pt-[200px]">
+      <Contact/>
+    </div>
+    <WhatsApp/>
     <Copyright/>
   </n-config-provider>
 </template>
 
 <style scoped lang="scss">
-
 .font-heading{
   font-size: 24px;
   font-weight: bold;

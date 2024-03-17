@@ -18,6 +18,7 @@ const user = usePage().props.auth.user;
 
 const form = useForm({
     name: user.name,
+    whatsappNumber: user.whatsappNumber,
     email: user.email,
 });
 </script>
@@ -47,6 +48,22 @@ const form = useForm({
                 />
 
                 <InputError class="mt-2" :message="form.errors.name" />
+            </div>
+
+            <div>
+                <InputLabel for="whatsappNumber" value="WhatsApp" />
+
+                <TextInput
+                    id="whatsappNumber"
+                    type="text"
+                    class="mt-1 block w-full"
+                    v-model="form.whatsappNumber"
+                    required
+                    autofocus
+                    autocomplete="whatsappNumber"
+                />
+
+                <InputError class="mt-2" :message="form.errors.whatsappNumber" />
             </div>
 
             <div>

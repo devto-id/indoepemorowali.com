@@ -37,7 +37,7 @@ const onlyAllowNumber = (value) => !value || /^\d+$/.test(value);
 
 <template>
    <div class="contact">
-        <div class="container p-5">
+        <div class="container px-10">
             <div class="title"> 
                 <h1 class="font-heading text-gray-700 font-heading text-center text-4xl max-[570px]:text-3xl max-[485px]:text-2xl max-[400px]:text-xl"> 
                     Kontak Kami 

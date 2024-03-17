@@ -4,41 +4,51 @@ import { Link } from '@inertiajs/vue3';
 import horizontal from '../../../../public/img/logo/logo-horizontal.png';
 import iconLogo from '../../../../public/img/icon/icon.png';
 
-// Gunakan variabel reaktivitas untuk mengontrol tampilan menu
-const isMenuOpen = ref(false);
+// Daftar ID dari setiap bagian halaman
+const sections = ['#jumbotron', '#about', '#pricelist', '#testimoni', '#contact'];
+
+// Gunakan variabel reaktivitas untuk menyimpan ID dari bagian halaman yang sedang aktif
+const activeSection = ref('');
+
+// Fungsi untuk menentukan bagian halaman yang sedang aktif berdasarkan posisi scroll
+const setActiveSection = () => {
+  const scrollPosition = window.scrollY;
+  for (const section of sections) {
+    const element = document.querySelector(section);
+    if (element && scrollPosition >= element.offsetTop && scrollPosition < element.offsetTop + element.offsetHeight) {
+      activeSection.value = section;
+      break;
+    }
+  }
+};
+
+// Tambahkan event listener untuk event scroll saat komponen dimount
+onMounted(() => {
+  window.addEventListener('scroll', setActiveSection);
+});
 
 // Fungsi untuk mengubah status tampilan menu
+const isMenuOpen = ref(false);
 const toggleMenu = () => {
   isMenuOpen.value = !isMenuOpen.value;
 };
-
-// Pasang event listener saat komponen dimount
-onMounted(() => {
-  const menuToggle = document.querySelector('.hamburger input');
-  const nav = document.querySelector('nav .navbar .nav-links');
-  
-  // Ubah gaya langsung dari JavaScript ke variabel reaktivitas
-  menuToggle.addEventListener('click', () => {
-    isMenuOpen.value = !isMenuOpen.value;
-  });
-});
 </script>
 
 <template>
   <nav>
     <div class="navbar bg-white py-5 px-5 flex items-center justify-evenly h-fit w-full fixed top-0 drop-shadow-md">
       <div class="logo mx-5">
-        <Link href="/home">
+        <Link href="#jumbotron">
           <img :src="horizontal" alt="Logo" width="100%" class="max-[300px]:hidden">
           <img :src="iconLogo" alt="Logo" width="100%" class="hidden max-[300px]:block max-w-[50px]">
         </Link>
       </div>
       <div class="nav-links my-auto text-lg font-bold flex items-center max-[1080px]:flex-col" :class="{ 'show': isMenuOpen }">
-        <Link :href="route('home.index')" class="nav-link flex items-center">Beranda</Link>
-        <Link :href="route('home.index')" class="nav-link flex items-center">Tentang Kami</Link>
-        <Link :href="route('home.index')" class="nav-link flex items-center">Produk</Link>
-        <Link :href="route('home.index')" class="nav-link flex items-center">Testimoni</Link>
-        <Link :href="route('home.index')" class="nav-link flex items-center">Kontak</Link>
+        <Link href="#jumbotron" class="nav-link flex items-center" :class="{ 'active': activeSection === '#jumbotron' }">Beranda</Link>
+        <Link href="#about" class="nav-link flex items-center" :class="{ 'active': activeSection === '#about' }">Tentang Kami</Link>
+        <Link href="#pricelist" class="nav-link flex items-center" :class="{ 'active': activeSection === '#pricelist' }">Produk</Link>
+        <Link href="#testimoni" class="nav-link flex items-center" :class="{ 'active': activeSection === '#testimoni' }">Testimoni</Link>
+        <Link href="#contact" class="nav-link flex items-center" :class="{ 'active': activeSection === '#contact' }">Kontak</Link>
       </div>
       <label class="hamburger mx-5">
         <input type="checkbox" v-model="isMenuOpen">
@@ -59,7 +69,7 @@ $primary: #05A7E7;
 }
 
 .logo {
-  max-width: 20%;
+  max-width: 15%;
 }
 
 .nav-links {
