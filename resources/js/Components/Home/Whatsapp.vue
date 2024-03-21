@@ -10,7 +10,7 @@ const handleWhatsAppClick = () => {
   
   // Pastikan nomor WhatsApp tersedia sebelum membuka obrolan
   if (phoneNumber) {
-    const message = "Assalamu'alaikum. saya mau memesan produk yang anda jual, bisa saya minta catalog nya?";
+    const message = "Assalamu'alaikum. saya mau memesan produk yang anda jual di " + route('home.index') + ", bisa saya minta catalog nya?";
     const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
     window.open(whatsappUrl, '_blank');
   } else {

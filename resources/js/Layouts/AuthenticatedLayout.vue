@@ -34,8 +34,23 @@ const showingNavigationDropdown = ref(false);
                                 </NavLink>
                             </div>
                             <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                                <NavLink :href="route('product')" :active="route().current('product')">
+                                <NavLink :href="route('category')" :active="route().current('category', 'category.create', 'category.edit')">
+                                    Category
+                                </NavLink>
+                            </div>
+                            <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                                <NavLink :href="route('product')" :active="route().current('product', 'product.create', 'product.edit')">
                                     Product
+                                </NavLink>
+                            </div>
+                            <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                                <NavLink :href="route('testimoni')" :active="route().current('testimoni', 'testimoni.create')">
+                                    Testimoni
+                                </NavLink>
+                            </div>
+                            <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                                <NavLink :href="route('feedback')" :active="route().current('feedback')">
+                                    Feedback
                                 </NavLink>
                             </div>
                         </div>
@@ -122,7 +137,7 @@ const showingNavigationDropdown = ref(false);
                         </ResponsiveNavLink>
                     </div>
                     <div class="pt-2 pb-3 space-y-1">
-                        <ResponsiveNavLink :href="route('product')" :active="route().current('product')">
+                        <ResponsiveNavLink :href="route('product')" :active="route().current('product', 'product.create')">
                             Product
                         </ResponsiveNavLink>
                     </div>
