@@ -1,5 +1,8 @@
 <script setup>
-import { ChevronDown24Filled } from "@vicons/fluent";
+import { 
+    ChevronDown24Filled,
+    TagMultiple24Filled
+ } from "@vicons/fluent";
 import { defineProps, ref } from 'vue'; 
 
 const props = defineProps({ 
@@ -41,12 +44,14 @@ const isAccordionOpen = (index) => {
                 <div class="accordion rounded-xl overflow-hidden transition-all shadow-md hover:shadow-lg">
                     <div class="accordion-header bg-primary-50 py-4 px-6 cursor-pointer flex justify-between" @click="toggleAccordion(index)">
                         <span class="font-semibold text-lg">{{ category.nama_kategori }}</span>
-                        <ChevronDown24Filled class="arrow w-5" :class="{ 'rotate-180': isAccordionOpen(index) }"/>
+                        <ChevronDown24Filled class="arrow w-5 transition-all duration-300" :class="{ 'rotate-180': isAccordionOpen(index) }"/>
                     </div>
-                    <div class="accordion-body" :class="{ 'h-fit': isAccordionOpen(index), 'max-h-[500px]': isAccordionOpen(index), 'max-h-0': !isAccordionOpen(index) }">
-                        <ul class="p-4">
-                            <li class="text-base" v-for="(detail, i) in category.detail_products" :key="i">
-                            - {{ detail.nama_produk }} <br>
+                    <div class="accordion-body transition-all duration-300" :class="{ 'min-h-[5vw]': isAccordionOpen(index), 'max-h-[100vw]': isAccordionOpen(index), 'max-h-0': !isAccordionOpen(index) }">
+                        <ul class="p-4" v-for="(detail, i) in category.detail_products" :key="i">
+                            <li class="text-base flex">
+                            <TagMultiple24Filled class="w-4 mr-2"/> {{ detail.nama_produk }} <br>
+                            </li>
+                            <li class="text-base flex">
                             {{ formatCurrency(detail.harga) }} Isi {{ detail.qty_barang }}
                             </li>
                         </ul>
