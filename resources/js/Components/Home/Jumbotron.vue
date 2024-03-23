@@ -8,8 +8,8 @@ const scrollToFeedback = () => {
 </script>
 <template>
     <header>
-        <div class="jumbotron pt-[100px] px-10">
-            <div class="container flex flex-wrap">
+        <div class="jumbotron pt-[100px] max-[1080px]:mt-[50px] px-10">
+            <div class="container flex flex-wrap mx-auto">
                 <div class="text max-w-[500px] w-[100%] h-fit m-auto items-center">
                     <div class="title mx-auto max-w-[500px]">
                         <h1 class="font-heading text-gray-700 text-4xl max-[570px]:text-3xl max-[485px]:text-2xl max-[400px]:text-xl">PT. INDO EPE MOROWALI</h1>

@@ -137,8 +137,23 @@ const showingNavigationDropdown = ref(false);
                         </ResponsiveNavLink>
                     </div>
                     <div class="pt-2 pb-3 space-y-1">
+                        <ResponsiveNavLink :href="route('category')" :active="route().current('category', 'category.create')">
+                            Category
+                        </ResponsiveNavLink>
+                    </div>
+                    <div class="pt-2 pb-3 space-y-1">
                         <ResponsiveNavLink :href="route('product')" :active="route().current('product', 'product.create')">
                             Product
+                        </ResponsiveNavLink>
+                    </div>
+                    <div class="pt-2 pb-3 space-y-1">
+                        <ResponsiveNavLink :href="route('testimoni')" :active="route().current('testimoni', 'testimoni.create')">
+                            Testimoni
+                        </ResponsiveNavLink>
+                    </div>
+                    <div class="pt-2 pb-3 space-y-1">
+                        <ResponsiveNavLink :href="route('feedback')" :active="route().current('feedback')">
+                            Feedback
                         </ResponsiveNavLink>
                     </div>
 

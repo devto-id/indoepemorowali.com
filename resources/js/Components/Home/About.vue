@@ -1,8 +1,8 @@
 <script setup>
 </script>
 <template>
-    <div class="about">
-        <div class="container px-5">
+    <div class="about max-[1080px]:mt-[75px]">
+        <div class="container px-5 mx-auto">
             <div class="title">
                 <h1 class="font-heading text-gray-700 text-center text-4xl max-[570px]:text-3xl max-[485px]:text-2xl max-[400px]:text-xl">
                     Tentang Kami
