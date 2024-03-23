@@ -46,7 +46,7 @@ const isAccordionOpen = (index) => {
                         <span class="font-semibold text-lg">{{ category.nama_kategori }}</span>
                         <ChevronDown24Filled class="arrow w-5 transition-all duration-300" :class="{ 'rotate-180': isAccordionOpen(index) }"/>
                     </div>
-                    <div class="accordion-body transition-all duration-300" :class="{ 'min-h-[5vw]': isAccordionOpen(index), 'max-h-[100vw]': isAccordionOpen(index), 'max-h-0': !isAccordionOpen(index) }">
+                    <div class="accordion-body transition-all duration-300" :class="{ 'min-h-[5vw]': isAccordionOpen(index), 'max-h-[1000vw]': isAccordionOpen(index), 'max-h-0': !isAccordionOpen(index) }">
                         <ul class="p-4" v-for="(detail, i) in category.detail_products" :key="i">
                             <li class="text-base flex">
                             <TagMultiple24Filled class="w-4 mr-2"/> {{ detail.nama_produk }} <br>
