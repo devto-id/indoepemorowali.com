@@ -52,7 +52,7 @@ const isAccordionOpen = (index) => {
                             <TagMultiple24Filled class="w-4 mr-2"/> {{ detail.nama_produk }} <br>
                             </li>
                             <li class="text-base flex">
-                            {{ formatCurrency(detail.harga) }} Isi {{ detail.qty_barang }}
+                            {{ formatCurrency(detail.harga) }} Isi {{ detail.qty_barang }} Pcs
                             </li>
                         </ul>
                     </div>
