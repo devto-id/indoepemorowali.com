@@ -28,7 +28,7 @@ const props = defineProps({
                         <n-image
                             style="margin: 10px;"
                             width="400"
-                            :src="'/storage/' + testimoniItem.image"
+                            :src="testimoniItem.image"
                             v-for="(testimoniItem, index) in testimoni" :key="`testimoni-${index}`"
                         />
                     </n-space>

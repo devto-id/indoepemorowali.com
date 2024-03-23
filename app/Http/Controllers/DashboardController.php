@@ -182,7 +182,7 @@ class DashboardController extends Controller
             // Periksa apakah gambar baru diunggah
             if ($request->hasFile('image')) {
                 // Unggah dan simpan gambar baru
-                $imagePath = $request->file('image')->store('testimoni', 'public');
+                $imagePath = $request->file('image')->store('testimonies', 'public');
                 $validated['image'] = $imagePath;
             }
 
