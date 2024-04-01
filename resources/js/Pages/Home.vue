@@ -20,6 +20,10 @@ const props = defineProps({
     type: Array, 
     required: true, 
   }, 
+  weightUnits: { 
+        type: Array, 
+        required: true, 
+  },
   testimoni: { 
     type: Array, 
     required: true, 
@@ -41,7 +45,7 @@ const props = defineProps({
       <CoreValue class="pt-[150px]"/>
     </div>
     <div id="pricelist" class="pt-[150px] min-h-[500px] mt-[50px]">
-      <Pricelist :categoryProducts="categoryProducts"/>
+      <Pricelist :categoryProducts="categoryProducts" :weightUnits="weightUnits"/>
     </div>
     <div id="testimoni" class="pt-[200px] min-h-[500px]">
       <Testimoni :testimoni="testimoni" />

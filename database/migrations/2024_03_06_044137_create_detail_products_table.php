@@ -16,7 +16,9 @@ class CreateDetailProductsTable extends Migration
         Schema::create('detail_products', function (Blueprint $table) {
             $table->id();
             $table->foreignId('category_product_id')->constrained('category_products');
+            $table->foreignId('weight_unit_id');
             $table->string('nama_produk');
+            $table->string('weight');
             $table->string('qty_barang');
             $table->decimal('harga', 10, 2);
             $table->timestamps();

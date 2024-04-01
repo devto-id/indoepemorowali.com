@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use App\Models\DetailProduct;
 use App\Models\CategoryProduct;
+use App\Models\WeightUnit;
 use App\Models\Photo;
 use App\Models\ContactForm;
 use Illuminate\Http\Request;
@@ -84,9 +85,11 @@ class DashboardController extends Controller
     public function showProduct(): Response
     {
         $productsByCategory = CategoryProduct::with('detailProducts')->get();
+        $weightUnits = WeightUnit::with('detailProducts')->get();
         
         return Inertia::render('Dashboard/Product/Index', [
             'productsByCategory' => $productsByCategory,
+            'weightUnits' => $weightUnits,
         ]);
     }
 
@@ -94,6 +97,7 @@ class DashboardController extends Controller
     {   
         return Inertia::render('Dashboard/Product/Form', [
             'categories' => CategoryProduct::get(),
+            'units' => WeightUnit::get(),
         ]);
     }
 
@@ -103,6 +107,9 @@ class DashboardController extends Controller
         $validated = $request->validate([
             'category_product_id' => 'required',
             'nama_produk' => 'required',
+            'weight_unit_id' => 'required',
+            'weight' => 'required',
+            'nama_produk' => 'required',
             'qty_barang' => 'required',
             'harga' => 'required',
         ]);
@@ -111,6 +118,8 @@ class DashboardController extends Controller
         $product = DetailProduct::create([
             'category_product_id' => $validated['category_product_id'], // Berikan nilai category_product_id
             'nama_produk' => $validated['nama_produk'],
+            'weight_unit_id' => $validated['weight_unit_id'],
+            'weight' => $validated['weight'],
             'qty_barang' => $validated['qty_barang'],
             'harga' => $validated['harga'],
         ]);
@@ -125,6 +134,7 @@ class DashboardController extends Controller
         return Inertia::render('Dashboard/Product/Edit', [
             'data' => $product,
             'categories' => CategoryProduct::get(),
+            'units' => WeightUnit::get(),
         ]);
     }
 
@@ -133,11 +143,15 @@ class DashboardController extends Controller
         // Validasi data yang masuk
         $validated = $request->validate([
             'nama_produk' => 'required',
+            'weight' => 'required',
+            'nama_produk' => 'required',
             'qty_barang' => 'required',
             'harga' => 'required',
         ]);
 
         $validated['category_product_id'] = $request->input('category_product_id');
+
+        $validated['weight_unit_id'] = $request->input('weight_unit_id');
 
         // Perbarui data produk
         $product->update($validated);

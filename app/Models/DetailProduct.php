@@ -11,7 +11,9 @@ class DetailProduct extends Model
 
     protected $fillable = [
         'category_product_id',
-        'nama_produk', // Tambahkan 'nama_produk' ke dalam $fillable
+        'nama_produk',
+        'weight_unit_id',
+        'weight',
         'qty_barang',
         'harga',
     ];
@@ -19,5 +21,10 @@ class DetailProduct extends Model
     public function category()
     {
         return $this->belongsTo(CategoryProduct::class, 'category_product_id');
+    }
+
+    public function unit()
+    {
+        return $this->belongsTo(WeightUnit::class, 'weight_unit_id');
     }
 }

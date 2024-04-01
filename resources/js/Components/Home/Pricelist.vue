@@ -10,6 +10,11 @@ const props = defineProps({
         type: Array, 
         required: true, 
     }, 
+
+    weightUnits: { 
+        type: Array, 
+        required: true, 
+    }, 
 }); 
 
 const formatCurrency = (value) => {
@@ -47,13 +52,13 @@ const isAccordionOpen = (index) => {
                         <ChevronDown24Filled class="arrow w-5 transition-all duration-300" :class="{ 'rotate-180': isAccordionOpen(index) }"/>
                     </div>
                     <div class="accordion-body transition-all duration-300" :class="{ 'min-h-[5vw]': isAccordionOpen(index), 'max-h-[1000vw]': isAccordionOpen(index), 'max-h-0': !isAccordionOpen(index) }">
-                        <ul class="p-4" v-for="(detail, i) in category.detail_products" :key="i">
-                            <li class="text-base flex">
-                            <TagMultiple24Filled class="w-4 mr-2"/> {{ detail.nama_produk }} <br>
-                            </li>
-                            <li class="text-base flex">
-                            {{ formatCurrency(detail.harga) }} Isi {{ detail.qty_barang }} Pcs
-                            </li>
+                        <ul class="p-4">
+                            <template v-for="(unit, unitIndex) in weightUnits" :key="unitIndex">
+                                <li class="text-base flex mb-2" v-for="(detail, detailIndex) in category.detail_products.filter(item => item.weight_unit_id === unit.id).sort((a, b) => parseFloat(a.weight) - parseFloat(b.weight))" :key="detailIndex">
+                                    <TagMultiple24Filled class="w-4 mr-2 mb-5"/> {{ detail.nama_produk }} {{ detail.weight }} {{ unit.unit }}<br>
+                                    {{ formatCurrency(detail.harga) }} Isi {{ detail.qty_barang }} Pcs
+                                </li>
+                            </template>
                         </ul>
                     </div>
                 </div>

@@ -8,6 +8,10 @@ const props = defineProps({
         type: Array, 
         required: true, 
     }, 
+    weightUnits: { 
+        type: Array, 
+        required: true, 
+    }, 
 }); 
 
 const formatCurrency = (value) => {
@@ -34,6 +38,7 @@ const formatCurrency = (value) => {
                             <thead class="bg-primary">
                                 <tr class="text-left">
                                     <th class="px-4 py-2 text-white font-bold whitespace-nowrap">Nama Produk</th>
+                                    <th class="px-4 py-2 text-white font-bold whitespace-nowrap">Berat Perkemasan</th>
                                     <th class="px-4 py-2 text-white font-bold whitespace-nowrap">Kuantitas Produk</th>
                                     <th class="px-4 py-2 text-white font-bold whitespace-nowrap">Harga Total Produk</th>
                                     <th class="px-4 py-2 text-white font-bold whitespace-nowrap">Actions</th>
@@ -42,7 +47,7 @@ const formatCurrency = (value) => {
                             <tbody>
                                 <template v-if="productsByCategory.length === 0">
                                     <tr class="border border-primary-300">
-                                        <td colspan="4" class="text-center py-5 text-gray-700">
+                                        <td colspan="5" class="text-center py-5 text-gray-700">
                                             Tidak ada data Product.
                                         </td>
                                     </tr>
@@ -50,7 +55,7 @@ const formatCurrency = (value) => {
                                 <template v-else>
                                     <template v-for="(category, index) in productsByCategory" :key="index">
                                         <tr class="bg-primary border border-primary-300">
-                                            <td class="px-4 py-2 text-white" :colspan="4">
+                                            <td class="px-4 py-2 text-white" :colspan="6">
                                                 <h3 class="text-lg font-semibold">{{ category.nama_kategori }}</h3>
                                             </td>
                                         </tr>
@@ -62,8 +67,13 @@ const formatCurrency = (value) => {
                                             </tr>
                                         </template>
                                         <template v-else>
-                                            <tr v-for="(detail, i) in category.detail_products" :key="i" class="border border-primary-300">
+                                            <tr v-for="(detail, i) in category.detail_products.sort((a, b) => a.weight_unit_id - b.weight_unit_id || a.weight - b.weight)" :key="i" class="border border-primary-300">
                                                 <td class="px-4 py-2">{{ detail.nama_produk }}</td>
+                                                <template v-for="(unit, index) in weightUnits" :key="index">
+                                                    <template v-if="detail.weight_unit_id === unit.id">
+                                                        <td class="px-4 py-2">{{ detail.weight }} {{ unit.unit }}</td>
+                                                    </template>
+                                                </template>
                                                 <td class="px-4 py-2">{{ detail.qty_barang }}</td>
                                                 <td class="px-4 py-2">{{ formatCurrency(detail.harga) }}</td>
                                                 <td class="px-4 py-2">

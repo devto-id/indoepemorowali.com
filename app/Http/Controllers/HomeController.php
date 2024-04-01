@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\CategoryProduct;
 use App\Models\DetailProduct;
+use App\Models\WeightUnit;
 use App\Models\Photo;
 use App\Models\ContactForm;
 use App\Models\User;
@@ -16,9 +17,11 @@ class HomeController extends Controller
     {
         $users = User::all();
         $categoryProducts = CategoryProduct::with('detailProducts')->get();
+        $weightUnits = WeightUnit::with('detailProducts')->get();
         $testimoni = Photo::all();
         return Inertia::render('Home', [
             'categoryProducts' => $categoryProducts,
+            'weightUnits' => $weightUnits,
             'testimoni' => $testimoni,
             'users' => $users,
         ]);

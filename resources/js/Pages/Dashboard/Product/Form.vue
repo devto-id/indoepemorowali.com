@@ -8,12 +8,18 @@ const props = defineProps({
         type: Array, 
         required: true, 
     }, 
+    units: { 
+        type: Array, 
+        required: true, 
+    }, 
 }); 
 
 // Menggunakan useForm untuk mengelola formulir
 const form = useForm({
     category_product_id: '',
     nama_produk: '',
+    weight_unit_id: '',
+    weight: '',
     qty_barang: '',
     harga: '',
 });
@@ -61,6 +67,25 @@ const formatCurrency = (value) => {
                                 <input id="nama_produk" v-model="form.nama_produk" type="text" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:border-primary-500 focus:ring focus:ring-primary-500 focus:ring-opacity-50" required autofocus autocomplete="nama_produk">
                                 <!-- Menampilkan pesan kesalahan jika terjadi validasi gagal -->
                                 <span class="text-red-600" v-if="form.errors.nama_produk" role="alert">{{ form.errors.nama_produk }}</span>
+                            </div>
+
+                            <!-- Input untuk satuan berat produk -->
+                            <div class="mt-4">
+                                <label for="weight_unit_id" class="block font-medium text-sm text-gray-700">Satuan Berat</label>
+                                <select id="weight_unit_id" v-model="form.weight_unit_id" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:border-primary-500 focus:ring focus:ring-primary-500 focus:ring-opacity-50" required autofocus autocomplete="weight_unit_id">
+                                    <option value="" disabled>Select Weight Unit</option>
+                                    <option v-for="weightUnit in units" :key="weightUnit.id" :value="weightUnit.id">{{ weightUnit.unit }}</option>
+                                </select>
+                                <!-- Menampilkan pesan kesalahan jika terjadi validasi gagal -->
+                                <span class="text-red-600" v-if="form.errors.weight_unit_id" role="alert">{{ form.errors.weight_unit_id }}</span>
+                            </div>
+
+                            <!-- Input untuk berat satuan produk -->
+                            <div class="mt-4">
+                                <label for="weight" class="block font-medium text-sm text-gray-700">Berat Perkemasan Produk</label>
+                                <input id="weight" v-model="form.weight" type="number" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:border-primary-500 focus:ring focus:ring-primary-500 focus:ring-opacity-50" required autocomplete="weight">
+                                <!-- Menampilkan pesan kesalahan jika terjadi validasi gagal -->
+                                <span class="text-red-600" v-if="form.errors.weight" role="alert">{{ form.errors.weight }}</span>
                             </div>
 
                             <!-- Input untuk kuantitas produk -->
