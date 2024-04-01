@@ -14,6 +14,7 @@ const handleWhatsAppClick = () => {
   } else {
     // Tindakan jika nomor WhatsApp tidak tersedia
     alert("Nomor WhatsApp tidak tersedia.");
+    console.log("Nomor WhatsApp tidak tersedia:", user); // Debugging
   }
 };
 </script>
