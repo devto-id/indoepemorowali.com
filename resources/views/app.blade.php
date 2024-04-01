@@ -4,16 +4,25 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width,initial-scale=1.0">
-    
+
+        <meta name="url"
+            content="https://indoepemorowali.id/" />
+        <meta name="title"
+            content="PT. Indo Epe Morowali" />
         <meta name="description"
             content="Distributor Sembako Termurah dengan harga Ekomomis." />
         <meta name="keywords"
             content="Distributor, Sembako, Supplier, Supply Chain, Ekspedisi" />
-        <meta name="copyright" content="remotify.com" itemprop="dateline" />
+        <meta name="copyright" content="indoepemorowali.id" itemprop="dateline" />
         <meta name="author" content="Devto.id" />
         <meta name="robots" content="index, follow" />
         <meta name="googlebot" content="index, follow" />
         <meta name="googlebot-news" content="index, follow" />
+
+        <!-- Meta untuk mendefinisikan thumbnail yang akan muncul saat tautan dibagikan -->
+        <meta property="og:image" content="{{ asset('img/coverLink/coverLink.jpg') }}">
+        <meta property="og:image:width" content="2560">
+        <meta property="og:image:height" content="1440">
     
         <meta name="language" content="id" />
         <meta name="geo.country" content="id" />
