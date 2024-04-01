@@ -52,7 +52,7 @@ const remove = (testimoniId) => {
                                 <template v-if="testimonies.length > 0">
                                     <tr v-for="(testimoni, showTestimoni) in testimonies" :key="showTestimoni" class="border border-primary-300">
                                         <td class="px-4 py-2">
-                                            <img :src="testimoni.image" alt="testimoni" style="max-width: 200px;">
+                                            <img :src="route('home.index') + '/' + testimoniItem.image" alt="testimoni" style="max-width: 200px;">
                                         </td>
                                         <td class="px-4 py-2">
                                             <button type="button" @click="remove(testimoni.id)" class="px-3 py-2 bg-red-500 text-white text-lg rounded-md transition-colors duration-300 hover:bg-red-600 focus:outline-none focus:bg-red-600 mr-3">Delete</button>
