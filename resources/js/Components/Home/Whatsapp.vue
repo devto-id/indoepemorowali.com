@@ -5,12 +5,10 @@ import { usePage } from '@inertiajs/vue3';
 const user = usePage().props.auth.user;
 
 const handleWhatsAppClick = () => {
-  // Mengambil nomor WhatsApp dari bidang whatsappNumber pada objek user
-  const phoneNumber = user.whatsappNumber;
-  
-  // Pastikan nomor WhatsApp tersedia sebelum membuka obrolan
-  if (phoneNumber) {
-    const message = "Assalamu'alaikum. saya mau memesan produk yang anda jual di " + route('home.index') + ", bisa saya minta catalog nya?";
+  // Pastikan properti whatsappNumber ada dan memiliki nilai
+  if (user && user.whatsappNumber) {
+    const phoneNumber = user.whatsappNumber;
+    const message = "Assalamu'alaikum. Saya mau memesan produk yang Anda jual di " + route('home.index') + ", bisa saya minta katalognya?";
     const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
     window.open(whatsappUrl, '_blank');
   } else {
