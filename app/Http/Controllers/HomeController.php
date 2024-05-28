@@ -16,7 +16,9 @@ class HomeController extends Controller
 {
     public function index()
     {
-        $user = User::find(1);
+        $email = 'ptindoepemorowali@gmail.com';
+
+        $user = User::where('email', $email)->first();
         $whatsappContact = "https://api.whatsapp.com/send?phone=" . $user->whatsappNumber . "&text=Assalamu'alaikum. Saya mau memesan produk yang Anda jual di " . "(" . route('home.index') . "), " . "apakah saya bisa minta katalognya ?.";
         $categoryProducts = CategoryProduct::with('detailProducts')->get();
         $weightUnits = WeightUnit::with('detailProducts')->get();
