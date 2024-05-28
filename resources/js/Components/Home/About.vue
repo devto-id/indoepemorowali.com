@@ -1,7 +1,8 @@
 <script setup>
+    import { LinkSquare24Regular } from "@vicons/fluent";
 </script>
 <template>
-    <div class="about max-[1080px]:mt-[75px]">
+    <div class="about">
         <div class="container px-5 mx-auto">
             <div class="title">
                 <h1 class="font-heading text-gray-700 text-center text-4xl max-[570px]:text-3xl max-[485px]:text-2xl max-[400px]:text-xl">
@@ -16,7 +17,10 @@
                     Kami menyediakan berbagai jenis bahan pangan berkualitas tinggi, termasuk tepung, air mineral, beras, dan produk-produk lainnya. Kami juga menawarkan layanan distribusi dan ekspedisi yang andal untuk memastikan produk kami sampai dengan aman dan tepat waktu ke tangan pelanggan.
                 </p>
                 <p>
-                    Didirikan dengan semangat untuk memberikan solusi distribusi terbaik, PT. Indo Epe Morowali telah tumbuh dari sebuah visi menjadi kenyataan. Berkat dedikasi kami yang tinggi terhadap kualitas, layanan, dan kepuasan pelanggan, kami telah menjadi pilihan utama bagi banyak perusahaan di industri bahan pangan.
+                    Didirikan tahun 2022 dengan semangat untuk memberikan solusi distribusi terbaik, 
+                    PT. Indo Epe Morowali telah tumbuh dari sebuah visi menjadi kenyataan. Berkat dedikasi kami yang tinggi terhadap kualitas, 
+                    layanan, dan kepuasan pelanggan, kami telah menjadi pilihan utama bagi 
+                    banyak perusahaan di industri bahan pangan. <a :href="route('comprof.index')">Selengkapnya&crarr;</a>
                 </p>
             </div>
         </div>
@@ -25,5 +29,13 @@
 <style scoped lang="scss">
 $primary: #05A7E7;
 
+a{
+    color: $primary;
+    transition: all .3s;
+}
+a:hover{
+    text-decoration: underline;
+    color: #057eaf;
+}
 
 </style>

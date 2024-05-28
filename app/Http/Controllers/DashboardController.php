@@ -6,6 +6,7 @@ use App\Models\User;
 use App\Models\DetailProduct;
 use App\Models\CategoryProduct;
 use App\Models\WeightUnit;
+use App\Models\Partner;
 use App\Models\Photo;
 use App\Models\ContactForm;
 use Illuminate\Http\Request;
@@ -168,6 +169,69 @@ class DashboardController extends Controller
         return redirect(route('product'))->with('message', [
             ['success', 'Data deleted successfully.']
         ]);
+    }
+    // Partner Controller
+    public function showPartner(): Response
+    {
+        $partners = Partner::all();
+        
+        return Inertia::render('Dashboard/Partners/Index', [
+            'partners' => $partners,
+        ]);
+    }
+
+    public function createPartner(): Response
+    {   
+        return Inertia::render('Dashboard/Partners/Form');
+    }
+
+    public function storePartner(Request $request)
+    {
+        try {
+            // Validasi data yang masuk
+            $validated = $request->validate([
+                'image' => 'required|image|mimes:jpeg,png,jpg,gif,webp',
+            ]);
+
+            // Periksa apakah gambar baru diunggah
+            if ($request->hasFile('image')) {
+                // Unggah dan simpan gambar baru
+                $imagePath = $request->file('image')->store('partners', 'public');
+                $validated['image'] = $imagePath;
+            }
+
+            // Buat Partner baru dan simpan ke database
+            $Partner = Partner::create($validated);
+
+            return redirect(route('partner'))->with('message', [
+                ['success', 'Data saved successfully.']
+            ]);
+        } catch (\Exception $e) {
+            // Tangani kesalahan
+            return back()->withInput()->with('message', [
+                ['error', 'Failed to save data.']
+            ]);
+        }
+    }
+
+    public function destroyPartner(Partner $partner)
+    {
+        try {
+            // Hapus gambar dari direktori penyimpanan
+            Storage::disk('public')->delete($partner->image);
+
+            // Hapus objek Partner dari database
+            $partner->delete();
+
+            return redirect(route('partner'))->with('message', [
+                ['success', 'Data deleted successfully.']
+            ]);
+        } catch (\Exception $e) {
+            // Tangani kesalahan
+            return back()->with('message', [
+                ['error', 'Failed to delete data.']
+            ]);
+        }
     }
 
     // Testimoni Controller

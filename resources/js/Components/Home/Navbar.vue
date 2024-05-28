@@ -5,7 +5,7 @@ import horizontal from '../../../../public/img/logo/logo-horizontal.png';
 import iconLogo from '../../../../public/img/icon/icon.png';
 
 // Daftar ID dari setiap bagian halaman
-const sections = ['#jumbotron', '#about', '#pricelist', '#testimoni', '#contact'];
+const sections = ['#jumbotron', '#about', '#pricelist', '#partner', '#testimoni', '#contact'];
 
 // Gunakan variabel reaktivitas untuk menyimpan ID dari bagian halaman yang sedang aktif
 const activeSection = ref('');
@@ -13,12 +13,41 @@ const activeSection = ref('');
 // Fungsi untuk menentukan bagian halaman yang sedang aktif berdasarkan posisi scroll
 const setActiveSection = () => {
   const scrollPosition = window.scrollY;
+  const windowHeight = window.innerHeight;
+  const documentHeight = document.documentElement.scrollHeight;
+  const navbarHeight = document.querySelector('.navbar').offsetHeight;
+
+  // Check if user scrolled to the bottom of the page
+  if (windowHeight + scrollPosition >= documentHeight) {
+    activeSection.value = '#contact';
+    return;
+  }
+
   for (const section of sections) {
     const element = document.querySelector(section);
-    if (element && scrollPosition >= element.offsetTop && scrollPosition < element.offsetTop + element.offsetHeight) {
-      activeSection.value = section;
-      break;
+    if (element) {
+      if (scrollPosition >= element.offsetTop - navbarHeight && scrollPosition < element.offsetTop + element.offsetHeight - navbarHeight) {
+        activeSection.value = section;
+        break;
+      } else if (scrollPosition >= element.offsetTop + element.offsetHeight - navbarHeight) {
+        activeSection.value = '';
+      }
     }
+  }
+};
+
+// Fungsi untuk scroll ke target dengan offset
+const scrollToSection = (section) => {
+  const element = document.querySelector(section);
+  if (element) {
+    const navbarHeight = document.querySelector('.navbar').offsetHeight;
+    window.scrollTo({
+      top: element.offsetTop + navbarHeight - 150,
+      behavior: 'smooth'
+    });
+  }
+  else {
+    window.location.href = window.route('home.index') + section;
   }
 };
 
@@ -38,17 +67,18 @@ const toggleMenu = () => {
   <nav>
     <div class="navbar bg-white py-5 px-5 flex items-center justify-evenly h-fit w-full fixed top-0 drop-shadow-md">
       <div class="logo mx-5">
-        <Link href="#jumbotron">
+        <a href="javascript:void(0);" @click.prevent="scrollToSection('#jumbotron')">
           <img :src="horizontal" alt="Logo" width="100%" class="max-[300px]:hidden">
           <img :src="iconLogo" alt="Logo" width="100%" class="hidden max-[300px]:block max-w-[50px]">
-        </Link>
+        </a>
       </div>
       <div class="nav-links my-auto text-lg font-bold flex items-center max-[1080px]:flex-col" :class="{ 'show': isMenuOpen }">
-        <Link href="#jumbotron" class="nav-link flex items-center" :class="{ 'active': activeSection === '#jumbotron' }">Beranda</Link>
-        <Link href="#about" class="nav-link flex items-center" :class="{ 'active': activeSection === '#about' }">Tentang Kami</Link>
-        <Link href="#pricelist" class="nav-link flex items-center" :class="{ 'active': activeSection === '#pricelist' }">Produk</Link>
-        <Link href="#testimoni" class="nav-link flex items-center" :class="{ 'active': activeSection === '#testimoni' }">Testimoni</Link>
-        <Link href="#contact" class="nav-link flex items-center" :class="{ 'active': activeSection === '#contact' }">Kontak</Link>
+        <a href="javascript:void(0);" @click.prevent="scrollToSection('#jumbotron')" class="nav-link flex items-center" :class="{ 'active': activeSection === '#jumbotron' }">Beranda</a>
+        <a href="javascript:void(0);" @click.prevent="scrollToSection('#about')" class="nav-link flex items-center" :class="{ 'active': activeSection === '#about' }">Tentang Kami</a>
+        <a href="javascript:void(0);" @click.prevent="scrollToSection('#pricelist')" class="nav-link flex items-center" :class="{ 'active': activeSection === '#pricelist' }">Produk</a>
+        <a href="javascript:void(0);" @click.prevent="scrollToSection('#partner')" class="nav-link flex items-center" :class="{ 'active': activeSection === '#partner' }">Partners</a>
+        <a href="javascript:void(0);" @click.prevent="scrollToSection('#testimoni')" class="nav-link flex items-center" :class="{ 'active': activeSection === '#testimoni' }">Testimoni</a>
+        <a href="javascript:void(0);" @click.prevent="scrollToSection('#contact')" class="nav-link flex items-center" :class="{ 'active': activeSection === '#contact' }">Kontak</a>
       </div>
       <label class="hamburger mx-5">
         <input type="checkbox" v-model="isMenuOpen">

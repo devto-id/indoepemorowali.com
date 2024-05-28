@@ -28,17 +28,29 @@ class ProfileController extends Controller
      * Update the user's profile information.
      */
     public function update(ProfileUpdateRequest $request): RedirectResponse
-    {
-        $request->user()->fill($request->validated());
+        {
+            // Ambil user saat ini dari permintaan
+            $user = $request->user();
 
-        if ($request->user()->isDirty('email')) {
-            $request->user()->email_verified_at = null;
+            // Mengisi model User dengan data yang diterima dari permintaan
+            $user->fill($request->validated());
+
+            // Periksa apakah email diubah
+            if ($user->isDirty('email')) {
+                // Reset email_verified_at jika email diubah
+                $user->email_verified_at = null;
+            }
+
+            // Set nilai whatsappNumber dengan data yang diterima dari permintaan
+            $user->whatsappNumber = $request->input('whatsappNumber');
+
+            // Simpan perubahan ke dalam database
+            $user->save();
+
+            // Redirect pengguna ke halaman edit profil
+            return Redirect::route('profile.edit')->with('status', 'Profile updated.');
         }
 
-        $request->user()->save();
-
-        return Redirect::route('profile.edit');
-    }
 
     /**
      * Delete the user's account.

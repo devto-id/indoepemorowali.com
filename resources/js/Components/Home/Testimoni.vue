@@ -24,10 +24,9 @@ const props = defineProps({
             </div>
             <div class="content">
                 <n-image-group show-toolbar-tooltip>
-                    <n-space style="display: flex; justify-content: space-evenly;">
+                    <n-space style="display: flex; justify-content: center;">
                         <n-image
                             style="margin: 10px;"
-                            width="400"
                             :src="'/storage/' + testimoniItem.image"
                             v-for="(testimoniItem, index) in testimoni" :key="`testimoni-${index}`"
                         />
@@ -40,4 +39,55 @@ const props = defineProps({
 
 <style scoped lang="scss">
 $primary: #05A7E7;
+.n-image{
+    max-width: 400px;
+}
+
+@media screen and (max-width: 1025px) {
+    .n-image{
+        max-width: 325px;
+    }
+}
+
+@media screen and (max-width: 770px) {
+    .n-image{
+        max-width: 250px;
+    }
+}
+
+@media screen and (max-width: 595px) {
+    .n-image{
+        max-width: 200px;
+    }
+}
+
+@media screen and (max-width: 595px) {
+    .n-image{
+        max-width: 200px;
+    }
+}
+
+@media screen and (max-width: 495px) {
+    .n-image{
+        max-width: 150px;
+    }
+}
+
+@media screen and (max-width: 395px) {
+    .n-image{
+        max-width: 125px;
+    }
+}
+
+@media screen and (max-width: 345px) {
+    .n-image{
+        max-width: 100px;
+    }
+}
+
+@media screen and (max-width: 295px) {
+    .n-image{
+        max-width: 75px;
+    }
+}
 </style>

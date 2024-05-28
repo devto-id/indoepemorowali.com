@@ -1,26 +1,23 @@
+<!-- Home.vue -->
 <script setup>
 import { LogoWhatsapp } from "@vicons/ionicons5";
-import { usePage } from '@inertiajs/vue3';
+import { defineProps } from 'vue';
 
-const user = usePage().props.auth.user;
+const props = defineProps({
+  whatsappContact: {
+    type: String, // Perhatikan bahwa tipe harus 'String' (awalan huruf besar)
+    required: true,
+  },
+});
 
-const handleWhatsAppClick = () => {
-  // Pastikan properti whatsappNumber ada dan memiliki nilai
-  if (user && user.whatsappNumber) {
-    const phoneNumber = user.whatsappNumber;
-    const message = "Assalamu'alaikum. Saya mau memesan produk yang Anda jual di " + route('home.index') + ", bisa saya minta katalognya?";
-    const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
-    window.open(whatsappUrl, '_blank');
-  } else {
-    // Tindakan jika nomor WhatsApp tidak tersedia
-    alert("Nomor WhatsApp tidak tersedia.");
-    console.log("Nomor WhatsApp tidak tersedia:", user); // Debugging
-  }
-};
+// Fungsi untuk menangani klik tombol
+const handleClick = () => {
+  window.open(props.whatsappContact);
+}
 </script>
 
 <template>
-  <n-button @click="handleWhatsAppClick" type="primary" circle class="n-button">
+  <n-button @click="handleClick" type="primary" circle class="n-button">
     <LogoWhatsapp class="h-10"></LogoWhatsapp>
   </n-button>
 </template>

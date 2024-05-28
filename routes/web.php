@@ -19,6 +19,7 @@ use Inertia\Inertia;
 */
 
 Route::get('/', [HomeController::class, 'index'])->name('home.index');
+Route::get('/company-profile', [HomeController::class, 'comprof'])->name('comprof.index');
 Route::post('/contact', [HomeController::class, 'store'])->name('contact.form');
 
 Route::middleware('auth')->group(function () {
@@ -40,6 +41,12 @@ Route::middleware('auth')->group(function () {
     Route::put('/product/{product}', [DashboardController::class, 'updateProduct'])->name('product.update');
     Route::delete('/product/{product}', [DashboardController::class, 'destroyProduct'])->name('product.destroy');
     
+    // Routes Partner
+    Route::get('/partner', [DashboardController::class, 'showPartner'])->name('partner');
+    Route::get('/partner/create', [DashboardController::class, 'createPartner'])->name('partner.create');
+    Route::post('/partner', [DashboardController::class, 'storePartner'])->name('partner.store');
+    Route::delete('/partner/{partner}', [DashboardController::class, 'destroyPartner'])->name('partner.destroy');
+
     // Routes Testimoni
     Route::get('/testimoni', [DashboardController::class, 'showTestimoni'])->name('testimoni');
     Route::get('/testimoni/create', [DashboardController::class, 'createTestimoni'])->name('testimoni.create');
