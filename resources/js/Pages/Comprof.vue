@@ -21,13 +21,13 @@
                 </div>
                 <div class="content max-w-[1300px] m-auto mt-14 text-gray-500 text-xl max-[570px]:text-lg max-[485px]:text-base">
                     <div class="pengantar">
-                        <div class="sub-content flex flex-wrap justify-center items-center">
+                        <div class="sub-content flex max-[1024px]:flex-wrap justify-center items-center">
                             <div class="image mx-7">
                                 <div class="image max-w-[500px] m-auto w-[100%]">
                                 <img src="../../../public/img/kantor/kantor.png" alt="produk">
                             </div>
                             </div>
-                            <div class="text max-w-[500px] mx-7">
+                            <div class="text w-[100%] mx-7 max-[1024px]:my-7 max-[1024px]:mx-0">
                                 <p>
                                     PT. Indo Epe Morowali berkedudukan di Desa Bahodopi Kecamatan Bahodopi Kabupaten Morowali, yang didirikan pada tanggal 04 Juli 2022.
                                 </p>
