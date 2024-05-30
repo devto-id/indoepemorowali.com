@@ -68,29 +68,33 @@
                         </div>
                         <div class="sub-content flex flex-wrap justify-center">
                             <n-card hoverable class="bg-primary-100">
-                                <div class="title-card">
-                                    <ShareScreenPersonOverlay24Filled class="icon"></ShareScreenPersonOverlay24Filled>
-                                    <h2 class="font-heading text-xl max-[400px]:text-lg max-[350px]:text-base">
-                                        Akhirudin Sumendeo
-                                    </h2>
-                                </div>
-                                <div class="content-card">
-                                    <h2 class="text-2xl max-[300px]:text-xl">
-                                        Direktur
-                                    </h2>
+                                <div class="container-card">
+                                    <div class="profile-image">
+                                        <img src="../../../public/img/profile/adin.jpg" alt="profile-image">
+                                    </div>
+                                    <div class="title-card">
+                                        <h2 class="font-heading text-xl max-[400px]:text-lg max-[350px]:text-base">
+                                            Akhirudin Sumendeo
+                                        </h2>
+                                        <h2 class="text-2xl max-[300px]:text-xl">
+                                            Direktur
+                                        </h2>
+                                    </div>
                                 </div>
                             </n-card>
                             <n-card hoverable class="bg-primary-100">
-                                <div class="title-card">
-                                    <ShareScreenPersonOverlay24Filled class="icon"></ShareScreenPersonOverlay24Filled>
-                                    <h2 class="font-heading text-xl max-[400px]:text-lg max-[350px]:text-base">
-                                        Awaludin Udin S
-                                    </h2>
-                                </div>
-                                <div class="content-card">
-                                    <h2 class="text-2xl max-[300px]:text-xl">
-                                        Komisaris
-                                    </h2>
+                                <div class="container-card">
+                                    <div class="profile-image">
+                                        <img src="../../../public/img/profile/awal.jpg" alt="profile-image">
+                                    </div>
+                                    <div class="title-card">
+                                        <h2 class="font-heading text-xl max-[400px]:text-lg max-[350px]:text-base">
+                                            Awaludin Udin S
+                                        </h2>
+                                        <h2 class="text-2xl max-[300px]:text-xl">
+                                            Komisaris
+                                        </h2>
+                                    </div>
                                 </div>
                             </n-card>
                         </div> 
@@ -200,21 +204,28 @@ i{
     text-align: center;
 }
 .n-card{
-        max-width: 400px;
+        max-width: 450px;
         min-width: 260px;
         padding: 10px;
         --tw-bg-opacity: .5;
         background-color: rgb(186 234 254 / var(--tw-bg-opacity));
         border-radius: 15px;
         margin: 15px;
-        .title-card{
+
+        .container-card{
             display: flex;
             align-items: center;
-            margin-bottom: 25px;
-            .icon{
-                max-width: 45px;
+            .profile-image{
+                max-width: 150px;
+                max-height: 150px;
                 color: $primary;
-                margin-right: 15px;
+                margin-right: 25px;
+                border-radius: 150px;
+                overflow: hidden;
+                border: 5px solid #05A7E7;
+            }
+            .title-card{
+                align-items: center;
             }
         }
     }
