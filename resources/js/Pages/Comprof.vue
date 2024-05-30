@@ -204,6 +204,35 @@ i{
     text-align: center;
 }
 .n-card{
+    max-width: 450px;
+    min-width: 260px;
+    padding: 10px;
+    --tw-bg-opacity: .5;
+    background-color: rgb(186 234 254 / var(--tw-bg-opacity));
+    border-radius: 15px;
+    margin: 15px;
+
+    .container-card{
+        display: flex;
+        align-items: center;
+        .profile-image{
+            max-width: 150px;
+            max-height: 150px;
+            color: $primary;
+            margin-right: 25px;
+            border-radius: 150px;
+            overflow: hidden;
+            border: 5px solid #05A7E7;
+        }
+        .title-card{
+            align-items: center;
+            min-width: 225px;
+        }
+    }
+}
+
+@media  screen and (max-width: 500px) {
+    .n-card{
         max-width: 450px;
         min-width: 260px;
         padding: 10px;
@@ -214,20 +243,25 @@ i{
 
         .container-card{
             display: flex;
+            flex-wrap: wrap;
             align-items: center;
             .profile-image{
                 max-width: 150px;
                 max-height: 150px;
                 color: $primary;
-                margin-right: 25px;
                 border-radius: 150px;
                 overflow: hidden;
                 border: 5px solid #05A7E7;
+                margin: auto;
             }
             .title-card{
                 align-items: center;
+                min-width: 100px;
+                text-align: center;
+                margin: auto;
             }
         }
     }
+}
 
 </style>
