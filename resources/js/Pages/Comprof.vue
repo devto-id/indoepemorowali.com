@@ -70,21 +70,6 @@
                             <n-card hoverable class="bg-primary-100">
                                 <div class="container-card">
                                     <div class="profile-image">
-                                        <img src="../../../public/img/profile/adin.jpg" alt="profile-image">
-                                    </div>
-                                    <div class="title-card">
-                                        <h2 class="font-heading text-xl max-[400px]:text-lg max-[350px]:text-base">
-                                            Akhirudin Sumendeo
-                                        </h2>
-                                        <h2 class="text-2xl max-[300px]:text-xl">
-                                            Direktur
-                                        </h2>
-                                    </div>
-                                </div>
-                            </n-card>
-                            <n-card hoverable class="bg-primary-100">
-                                <div class="container-card">
-                                    <div class="profile-image">
                                         <img src="../../../public/img/profile/awal.jpg" alt="profile-image">
                                     </div>
                                     <div class="title-card">
@@ -93,6 +78,21 @@
                                         </h2>
                                         <h2 class="text-2xl max-[300px]:text-xl">
                                             Komisaris
+                                        </h2>
+                                    </div>
+                                </div>
+                            </n-card>
+                            <n-card hoverable class="bg-primary-100">
+                                <div class="container-card">
+                                    <div class="profile-image">
+                                        <img src="../../../public/img/profile/adin.jpg" alt="profile-image">
+                                    </div>
+                                    <div class="title-card">
+                                        <h2 class="font-heading text-xl max-[400px]:text-lg max-[350px]:text-base">
+                                            Akhirudin Sumendeo
+                                        </h2>
+                                        <h2 class="text-2xl max-[300px]:text-xl">
+                                            Direktur
                                         </h2>
                                     </div>
                                 </div>
@@ -115,7 +115,7 @@
                                 </li>
                                 <li>
                                     <p>
-                                        Sub Distributor Air Mineral Merek Club
+                                        Distributor Beras Merek Gentong Rezeki
                                     </p>
                                 </li>
                                 <li>
