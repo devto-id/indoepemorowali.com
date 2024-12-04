@@ -28,8 +28,8 @@ const scrollToFeedback = () => {
                         </button>
                     </div>
                 </div>
-                <div class="image max-w-[500px] m-auto w-[100%]">
-                    <img src="../../../../public/img/product/produk.png" alt="produk">
+                <div class="image max-w-[500px] m-auto mt-10 w-[100%]">
+                    <img class="drop-shadow-md" src="../../../../public/img/product/produk.png" alt="produk">
                 </div>
             </div>
         </div>
