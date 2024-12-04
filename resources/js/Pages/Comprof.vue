@@ -59,7 +59,7 @@
                             </ul>
                         </div>
                     </div>
-                    
+
                     <div class="struktur">
                         <div class="sub-title">
                             <h2 class="font-heading">
@@ -97,9 +97,9 @@
                                     </div>
                                 </div>
                             </n-card>
-                        </div> 
+                        </div>
                     </div>
-                    
+
                     <div class="portfolio">
                         <div class="sub-title">
                             <h2 class="font-heading">
@@ -115,7 +115,17 @@
                                 </li>
                                 <li>
                                     <p>
-                                        Distributor Beras Merek Gentong Rezeki
+                                        Distributor Beras Merek Sawah Jingga
+                                    </p>
+                                </li>
+                                <li>
+                                    <p>
+                                        Distributor Beras Merek Sovia
+                                    </p>
+                                </li>
+                                <li>
+                                    <p>
+                                        Distributor Beras Merek Minyak Sovia
                                     </p>
                                 </li>
                                 <li>
